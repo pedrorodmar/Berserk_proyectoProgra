@@ -187,6 +187,22 @@ public abstract class Personajes {
         this.oro += cantidad;
         System.out.println(name + " gana " + cantidad + " puntos de oro.");
     }
+    
+    public boolean gastarOro(int cantidad) {
+        if (cantidad <= 0) return false;
+        
+        // Si el personaje tiene oro suficiente...
+        if (this.oro >= cantidad) {
+            this.oro -= cantidad; // Le restamos el dinero
+            
+            System.out.println(this.getName() + " ha gastado " + cantidad + " de oro en la tienda.");
+            
+            return true;
+        }
+        
+        // Si llega hasta aquí, es que no tenía dinero suficiente
+        return false;
+    }
 
  // ================= GETTERS =================
 
