@@ -188,7 +188,7 @@ public abstract class Personajes {
         System.out.println(name + " gana " + cantidad + " puntos de oro.");
     }
     
-    public boolean gastarOro(int cantidad) {
+    public boolean perderrOro(int cantidad) {
         if (cantidad <= 0) return false;
         
         // Si el personaje tiene oro suficiente...
@@ -202,6 +202,49 @@ public abstract class Personajes {
         
         // Si llega hasta aquí, es que no tenía dinero suficiente
         return false;
+    }
+    
+    
+ // ================= EQUIPAMIENTO =================
+
+    public void equiparArma(inventory.Arma nuevaArma) {
+        // Si ya tenía una, restamos su daño antes de poner la nueva
+        if (this.armaEquipada != null) {
+            this.danioBase -= this.armaEquipada.getDanio();
+        }
+        this.armaEquipada = nuevaArma;
+        this.danioBase += nuevaArma.getDanio();
+        System.out.println(name + " ahora empuña: " + nuevaArma.getNombre());
+    }
+
+    public void equiparArmadura(inventory.Armadura nuevaArmadura) {
+        // Si ya tenía una, restamos su defensa antes de poner la nueva
+        if (this.armaduraEquipada != null) {
+            this.defensa -= this.armaduraEquipada.getDefensa();
+        }
+        this.armaduraEquipada = nuevaArmadura;
+        this.defensa += nuevaArmadura.getDefensa();
+        System.out.println(name + " se ha puesto: " + nuevaArmadura.getNombre());
+    }
+    
+    public void usarHabilidadContra(int indiceHabilidad, Personajes objetivo) {
+        // 1. Validar que la habilidad existe en la lista
+        if (indiceHabilidad < 0 || indiceHabilidad >= habilidades.size()) return;
+
+        // 2. Obtener la habilidad de la lista
+        skills.Habilidades habilidad = habilidades.get(indiceHabilidad);
+
+        // 3. Intentar gastar energía 
+        if (this.gastarEnergia(habilidad.getCosteEnergia())) {
+            
+            // 4. Calcular daño: Daño base del personaje * Multiplicador de la habilidad
+            int danioFinal = (int) (this.getDanioBase() * habilidad.getMultiplicadorDanio());
+            
+            System.out.println("\n" + this.getName() + " lanza [" + habilidad.getNombre() + "]!");
+            
+            // 5. El objetivo recibe el daño calculado
+            objetivo.recibirDanio(danioFinal);
+        }
     }
 
  // ================= GETTERS =================
