@@ -42,7 +42,7 @@ public abstract class Personajes {
         this.oro = 0;
         this.vivo = true;
 
-        this.estadoActual = EstadoPersonaje.VULNERABLE;
+        this.estadoActual = EstadoPersonaje.NORMAL;
 
         // inicializa habilidades e inventario
         this.inventario = new Inventario();
@@ -79,7 +79,7 @@ public abstract class Personajes {
             this.vivo = false;                               // comprobamos si el personaje ha muerto
         }
 
-        System.out.println(name + " recibe " + danioReal + " puntos de daño");
+        System.out.println(name + " recibe " + danioReal + " puntos de daÃ±o");
 
         if (!this.vivo) {
             System.out.println(name + " ha sido derrotado...");
@@ -88,13 +88,13 @@ public abstract class Personajes {
 
     private int calcularDanioReal(int danio) {
 
-        // evitamos que el daño sea 0 → mínimo 1
+        // evitamos que el daÃ±o sea 0 â†’ mÃ­nimo 1
         return Math.max(1, danio - this.defensa);
     }
 
     private int aplicarModificadorEstado(int danio) {
 
-        // si está vulnerable recibe más daño
+        // si estÃ¡ vulnerable recibe mÃ¡s daÃ±o
         if (this.estadoActual == EstadoPersonaje.VULNERABLE) {
             return (int) (danio * 1.5);      // casteamos a int tras multiplicar
         }
@@ -102,17 +102,17 @@ public abstract class Personajes {
         return danio;
     }
 
-    // ================= ENERGÍA =================
+    // ================= ENERGÃ�A =================
 
     public boolean gastarEnergia(int coste) {
 
         // comprobamos que tenga suficiente energía para usar la habilidad
         if (energiaActual < coste) {
-            System.out.println(name + " no tiene suficiente energía.");
+            System.out.println(name + " no tiene suficiente energÃ­a.");
             return false;
         }
 
-        energiaActual -= coste;      // restamos energía
+        energiaActual -= coste;      // restamos energÃ­a
         return true;
     }
 
@@ -145,7 +145,7 @@ public abstract class Personajes {
 
     private int calcularXpNecesaria() {
 
-        // fórmula simple de subida de nivel
+        // fÃ³rmula simple de subida de nivel
         return nivel * 100;
     }
 
@@ -164,12 +164,12 @@ public abstract class Personajes {
 
     private void restaurarVidaCompleta() {
 
-        this.vidaActual = this.vidaMaxima;     // restaura vida al máximo
+        this.vidaActual = this.vidaMaxima;     // restaura vida al mÃ¡ximo
     }
 
     private void restaurarEnergiaCompleta() {
 
-        this.energiaActual = this.energiaMaxima;  // restaura energía al máximo
+        this.energiaActual = this.energiaMaxima;  // restaura energÃ­a al mÃ¡ximo
     }
 
     private void mostrarMensajeSubidaNivel() {

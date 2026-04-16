@@ -1,6 +1,6 @@
 package characters;
 
 public enum EstadoPersonaje {
-	VULNERABLE
-
+	VULNERABLE,
+	NORMAL
 }
