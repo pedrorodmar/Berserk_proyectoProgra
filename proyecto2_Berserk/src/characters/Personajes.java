@@ -150,14 +150,13 @@ public abstract class Personajes {
     }
 
     private void subirNivel() {
-
         this.nivel++;
         this.experiencia = 0;
 
-        restaurarVidaCompleta();
+        aplicarBonusDeSubidaNivel(); // 1º Crecemos los stats (Ej: Max HP pasa de 100 a 125)
+        
+        restaurarVidaCompleta();     // 2º Curamos al tope (Te curas hasta los 125)
         restaurarEnergiaCompleta();
-
-        aplicarBonusDeSubidaNivel();
 
         mostrarMensajeSubidaNivel();
     }
@@ -233,6 +232,14 @@ public abstract class Personajes {
 
     public int getOro() {
         return oro;
+    }
+    
+    public void setVidaMaxima(int vidaMaxima) {
+        this.vidaMaxima = vidaMaxima;
+    }
+
+    public void setEnergiaMaxima(int energiaMaxima) {
+        this.energiaMaxima = energiaMaxima;
     }
 
     public List<Habilidad> getHabilidades() {

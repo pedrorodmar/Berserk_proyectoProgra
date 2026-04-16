@@ -26,6 +26,8 @@ public class Casca extends Personajes {
         this.getHabilidades().add(new HabilidadEspecial("Carga de la Banda", "Ataque en equipo devastador.", 2.5, 35));
     }
 
+    		// Casca es equilibrada, todo sube un poco
+    
     @Override
     protected void aplicarBonusDeSubidaNivel() {
        
@@ -34,5 +36,7 @@ public class Casca extends Personajes {
         this.setDefensa(this.getDefensa() + 3);
         this.setVelocidad(this.getVelocidad() + 3);
         this.setEnergiaMaxima(this.getEnergiaMaxima() + 8);
+        
+        System.out.println("Casca afina sus dotes de liderazgo y combate.");
     }
 }
