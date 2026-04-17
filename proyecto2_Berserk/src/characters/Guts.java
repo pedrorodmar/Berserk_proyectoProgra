@@ -20,10 +20,17 @@ public class Guts extends Personajes {
         this.getHabilidades().add(new HabilidadEspecial("Cañón de Brazo", "Disparo a quemarropa.", 3.5, 45));
     }
 
+    	// Guts prioriza Vida, Ataque bruto y Defensa. Sacrifica Velocidad.
+    
     @Override
     protected void aplicarBonusDeSubidaNivel() {
-        // Al subir de nivel, los stats de Guts escalan a su estilo (Tanque)
-        // (Requeriría tener los setters de vidaMaxima, danioBase, etc. en la clase padre)
-        System.out.println("Guts se vuelve más letal y resistente.");
+              
+        this.setVidaMaxima(this.getVidaMaxima() + 20);
+        this.setDanioBase(this.getDanioBase() + 6);
+        this.setDefensa(this.getDefensa() + 5);
+        this.setVelocidad(this.getVelocidad() + 1);
+        this.setEnergiaMaxima(this.getEnergiaMaxima() + 5);
+       
+        System.out.println("Guts se vuelve más letal y resistente, como un auténtico monstruo.");
     }
 }

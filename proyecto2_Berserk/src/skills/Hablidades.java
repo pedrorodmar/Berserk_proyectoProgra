@@ -20,10 +20,17 @@ public abstract class Habilidades {
 
     // GETTERS Y SETTERS 
     
-    public String getNombre() { return nombre; }
-    public String getDescripcion() { return descripcion; }
-    public double getMultiplicadorDanio() { return multiplicadorDanio; }
-    public int getCosteEnergia() { return costeEnergia; }
+    public String getNombre() { 
+    	return nombre; }
+    
+    public String getDescripcion() { 
+    	return descripcion; }
+    
+    public double getMultiplicadorDanio() { 
+    	return multiplicadorDanio; }
+    
+    public int getCosteEnergia() { 
+    	return costeEnergia; }
 
     // MÉTODOS VARIOS
     
