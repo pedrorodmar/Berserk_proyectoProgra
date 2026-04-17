@@ -5,9 +5,14 @@ import java.util.List;
 import enemies.Enemigo; 
 
 public abstract class Zona {
+	
+	// Atributos
+	
     private String nombre;
     private List<Enemigo> enemigos;
 
+    // Construcutorr
+    
     public Zona(String nombre) {
         this.nombre = nombre;
         this.enemigos = new ArrayList<>();

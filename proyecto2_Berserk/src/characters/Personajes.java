@@ -205,7 +205,7 @@ public abstract class Personajes {
     }
     
     
- // ================= EQUIPAMIENTO =================
+ // ================= EQUIPAMIENTO ================= HAY QUE REPASARLOOOOO
 
     public void equiparArma(inventory.Arma nuevaArma) {
         // Si ya tenía una, restamos su daño antes de poner la nueva
