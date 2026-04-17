@@ -1,1 +1,60 @@
-/.metadata/
+# ======================
+# Eclipse
+# ======================
+.metadata/
+.recommenders/
+.loadpath
+
+# Eclipse project files (opcionales, puedes subirlos si quieres compartir config)
+.project
+.classpath
+.settings/
+
+# ======================
+# Compilación Java
+# ======================
+bin/
+target/
+out/
+build/
+
+# Archivos compilados
+*.class
+*.jar
+*.war
+*.ear
+
+# ======================
+# Logs y temporales
+# ======================
+*.log
+*.tmp
+*.bak
+*.swp
+
+# ======================
+# Sistema operativo
+# ======================
+# Windows
+Thumbs.db
+desktop.ini
+
+# Mac
+.DS_Store
+
+# ======================
+# IDEs adicionales
+# ======================
+# IntelliJ
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# ======================
+# Archivos bloqueados (tu error)
+# ======================
+**/EBWebView/**
+**/Network/**
+**/Cookies
