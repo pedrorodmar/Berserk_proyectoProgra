@@ -7,10 +7,10 @@ public abstract class Item {
 
 	public enum TipoItem{
 		
-		Curacion_pequeña,
+		Curacion_pequenia,
 		Curacion_grande,
 		Cura_totalEstado,
-		Armadura_pequeña,
+		Armadura_pequenia,
 		Armadura_media,
 		Armadura_alta,
 		Armadura_definitva,
@@ -19,7 +19,7 @@ public abstract class Item {
 		Arma_espada_definitiva,
 		Caballo_salvaje,
 		Oro,
-		Poción;
+		Pocion;
 	}
 	
 	private String nombre;
@@ -76,14 +76,14 @@ public abstract class Item {
 	
 	
 	public boolean esConsumible() {
-		return tipo == TipoItem.Curacion_pequeña ||
+		return tipo == TipoItem.Curacion_pequenia ||
 				tipo == TipoItem.Curacion_grande ||
 				tipo == TipoItem.Cura_totalEstado ||
-				tipo == TipoItem.Poción;
+				tipo == TipoItem.Pocion;
 	}
 	
 	public boolean esArmadura() {
-		return tipo == TipoItem.Armadura_pequeña ||
+		return tipo == TipoItem.Armadura_pequenia ||
 				tipo == TipoItem.Armadura_media ||
 				tipo == TipoItem.Armadura_alta ||
 				tipo == TipoItem.Armadura_definitva ;
