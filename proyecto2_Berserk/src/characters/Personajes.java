@@ -42,7 +42,7 @@ public abstract class Personajes {
         this.oro = 0;
         this.vivo = true;
 
-        this.estadoActual = EstadoPersonaje.NORMAL;
+        this.estadoActual = EstadoPersonaje.NORMAL; //prueba
 
         // inicializa habilidades e inventario
         this.inventario = new Inventario();
