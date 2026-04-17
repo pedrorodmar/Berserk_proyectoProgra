@@ -150,14 +150,13 @@ public abstract class Personajes {
     }
 
     private void subirNivel() {
-
         this.nivel++;
         this.experiencia = 0;
 
-        restaurarVidaCompleta();
+        aplicarBonusDeSubidaNivel(); // 1º Crecemos los stats (Ej: Max HP pasa de 100 a 125)
+        
+        restaurarVidaCompleta();     // 2º Curamos al tope (Te curas hasta los 125)
         restaurarEnergiaCompleta();
-
-        aplicarBonusDeSubidaNivel();
 
         mostrarMensajeSubidaNivel();
     }
@@ -187,6 +186,65 @@ public abstract class Personajes {
 
         this.oro += cantidad;
         System.out.println(name + " gana " + cantidad + " puntos de oro.");
+    }
+    
+    public boolean perderrOro(int cantidad) {
+        if (cantidad <= 0) return false;
+        
+        // Si el personaje tiene oro suficiente...
+        if (this.oro >= cantidad) {
+            this.oro -= cantidad; // Le restamos el dinero
+            
+            System.out.println(this.getName() + " ha gastado " + cantidad + " de oro en la tienda.");
+            
+            return true;
+        }
+        
+        // Si llega hasta aquí, es que no tenía dinero suficiente
+        return false;
+    }
+    
+    
+ // ================= EQUIPAMIENTO ================= HAY QUE REPASARLOOOOO
+
+    public void equiparArma(inventory.Arma nuevaArma) {
+        // Si ya tenía una, restamos su daño antes de poner la nueva
+        if (this.armaEquipada != null) {
+            this.danioBase -= this.armaEquipada.getDanio();
+        }
+        this.armaEquipada = nuevaArma;
+        this.danioBase += nuevaArma.getDanio();
+        System.out.println(name + " ahora empuña: " + nuevaArma.getNombre());
+    }
+
+    public void equiparArmadura(inventory.Armadura nuevaArmadura) {
+        // Si ya tenía una, restamos su defensa antes de poner la nueva
+        if (this.armaduraEquipada != null) {
+            this.defensa -= this.armaduraEquipada.getDefensa();
+        }
+        this.armaduraEquipada = nuevaArmadura;
+        this.defensa += nuevaArmadura.getDefensa();
+        System.out.println(name + " se ha puesto: " + nuevaArmadura.getNombre());
+    }
+    
+    public void usarHabilidadContra(int indiceHabilidad, Personajes objetivo) {
+        // 1. Validar que la habilidad existe en la lista
+        if (indiceHabilidad < 0 || indiceHabilidad >= habilidades.size()) return;
+
+        // 2. Obtener la habilidad de la lista
+        skills.Habilidades habilidad = habilidades.get(indiceHabilidad);
+
+        // 3. Intentar gastar energía 
+        if (this.gastarEnergia(habilidad.getCosteEnergia())) {
+            
+            // 4. Calcular daño: Daño base del personaje * Multiplicador de la habilidad
+            int danioFinal = (int) (this.getDanioBase() * habilidad.getMultiplicadorDanio());
+            
+            System.out.println("\n" + this.getName() + " lanza [" + habilidad.getNombre() + "]!");
+            
+            // 5. El objetivo recibe el daño calculado
+            objetivo.recibirDanio(danioFinal);
+        }
     }
 
  // ================= GETTERS =================
@@ -233,6 +291,14 @@ public abstract class Personajes {
 
     public int getOro() {
         return oro;
+    }
+    
+    public void setVidaMaxima(int vidaMaxima) {
+        this.vidaMaxima = vidaMaxima;
+    }
+
+    public void setEnergiaMaxima(int energiaMaxima) {
+        this.energiaMaxima = energiaMaxima;
     }
 
     public List<Habilidad> getHabilidades() {

@@ -27,14 +27,16 @@ public class Griffith extends Personajes {
         this.getHabilidades().add(new HabilidadEspecial("Juicio Divino", "Golpe certero definitivo.", 3.0, 45));
     }
 
-    @Override
+    	// Griffith prioriza Velocidad, Energía y Daño
+    
+    @Override  
     protected void aplicarBonusDeSubidaNivel() {
         
-        //Al ser un personaje ágil, gana mucha velocidad y energía.
-         
         this.setVidaMaxima(this.getVidaMaxima() + 10);
         this.setDanioBase(this.getDanioBase() + 4);
         this.setVelocidad(this.getVelocidad() + 6);
         this.setEnergiaMaxima(this.getEnergiaMaxima() + 10);
+        
+        System.out.println("Los movimientos de Griffith se vuelven imperceptibles.");
     }
 }
